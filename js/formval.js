@@ -34,7 +34,7 @@
             alert("introduzca un numero valido")
             e.preventDefault();
             return false;
-        } else if(nameC.value.length < 5 || text.value.length < 12){
+        } else if(nameC.value.length < 4 || text.value.length < 12){
             alert("rellene los espacios de Descripcion y que se cotizara ");
             e.preventDefault();
             return false;

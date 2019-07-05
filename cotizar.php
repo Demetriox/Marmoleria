@@ -38,7 +38,7 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
     '</br> <h4> Direccion : </h4>'.$_POST['dir'].
     '</br> <h4> Ciudad : </h4>'.$_POST['city'].
     '</br> <h4> Nombre Asunto : </h4>'.$_POST['nameC'].
-    '</br> <h4> Nombre Asunto : </h4>'.$_POST['texto'];
+    '</br> <h4> A Cotizar : </h4>'.$_POST['texto'];
 
     if(!$mail->send()) {
       $result= 'El mensaje Fallo al enviarse';
