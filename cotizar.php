@@ -46,8 +46,6 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
       $result = 'El mensaje ha sido enviado';
   }
 }
-
-  
 }
 
 ?>
@@ -100,7 +98,7 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
 				<li class="nav-item"><a href="serviciospantheon.html" class="nav-link">Servicios Panteon</a></li>
 				<li class="nav-item"><a href="ornamentos.html" class="nav-link">Ornamentos</a></li>
 				<li class="nav-item"><a href="laminas.html" class="nav-link">Laminas</a></li>
-				<li class="nav-item active"><a href="cotizar.html" class="nav-link">Cotizar</a></li>
+				<li class="nav-item active"><a href="cotizar.php" class="nav-link">Cotizar</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -241,7 +239,7 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
                 <li><a href="serviciospantheon.html"><span class="icon-long-arrow-right mr-2"></span>Servicios de Panteón</a></li>
                 <li><a href="ornamentos.html"><span class="icon-long-arrow-right mr-2"></span>Ornamentos</a></li>
                 <li><a href="laminas.html"><span class="icon-long-arrow-right mr-2"></span>Laminas</a></li>
-                <li><a href="cotizar.html"><span class="icon-long-arrow-right mr-2"></span>Cotizar</a></li>
+                <li><a href="cotizar.php"><span class="icon-long-arrow-right mr-2"></span>Cotizar</a></li>
                 </ul>
               </div>
         </div>
