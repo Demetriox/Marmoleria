@@ -1,10 +1,49 @@
+<?php
+ $result='';
+if(isset($_POST['submit'])){
+  require 'phpmailer/PHPMailerAutoload.php';
+
+  $mail = new PHPMailer;
+
+  //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+  $mail->isSMTP();                                      // Set mailer to use SMTP
+  $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+  $mail->SMTPAuth = true;                               // Enable SMTP authentication
+  $mail->Username = 'marmolmensaje@gmail.com';                 // SMTP username
+  $mail->Password = 'marmol123';                           // SMTP password
+  $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+  $mail->Port = 587;                                    // TCP port to connect to
+
+  $mail->setFrom('marmolmensaje@gmail.com');
+  $mail->addAddress('marmolespaloverde@gmail.com');     // Add a recipient              // Name is optional
+  $mail->addReplyTo('marmolespaloverde@gmail.com', 'Information');
+
+  $mail->isHTML(true);                                  // Set email format to HTML
+  $mail->Subject = 'Cotizacion';
+  $mail->Body    = '<h1 align=center> La persona : '.$_POST['name'].
+  '</br> <h4> Numero : </h4>'.$_POST['tel'].
+  '</br> <h4> Ciudad : </h4>'.$_POST['city'].
+  '</br> <h4> Nombre Asunto : </h4>'.$_POST['nameC'].
+  '</br> <h4> Nombre Asunto : </h4>'.$_POST['texto'];
+
+
+  if(!$mail->send()) {
+      $result= 'Message could not be sent.';
+  } else {
+      $result = 'Message has been sent';
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <title>Marmoleria Paloverde</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Marmoleria Hermosillo Sonora Trabajos  en Granito , Marmos y Mas. Lapidas Baños y Locetas">
+    <meta name="description" content="Marmoleria Hermosillo Sonora Trabajos  en Granito , Marmol y Mas. Lapidas Baños y Locetas">
 
     <link rel="shortcut icon" href="images/marmoleriaPaloverde/favicon-16x16.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -68,20 +107,21 @@
         <div class="container">
           <div class="row d-flex mb-5 contact-info">
             <div class="col-md-12 mb-4">
-              <h2 class="h4">Contact Information</h2>
+              <h2 class="h4">Informacion de Contacto</h2>
             </div>
             <div class="w-100"></div>
             <div class="col-md-3">
-              <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+              <p><span>Direccion:</span> Ramon Ballesteros # 42 Esquina Jose Ma. Valencia
+                Hermosillo, Sonora 83280, junto al panteon </p>
             </div>
             <div class="col-md-3">
-              <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+              <p><span>Telefono:</span> <a href="tel://016622505540">01 662 250 5540</a></p>
             </div>
             <div class="col-md-3">
-              <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+              <p><span>Email:</span> <a href="mailto:marmolespaloverde@gmail.com">marmolespaloverde@gmail.com</a></p>
             </div>
             <div class="col-md-3">
-              <p><span>Website</span> <a href="#">yoursite.com</a></p>
+              <p><a href="https://www.facebook.com/marmoles.paloverde"><span class="icon-facebook">acebook</span></a></p>
             </div>
           </div>
         </div>
@@ -90,22 +130,29 @@
         <div class="container-wrap">
           <div class="row d-flex align-items-stretch no-gutters">
             <div class="col-md-12 p-5 order-md-last">
-                <h3>Contactanos</h3>
-              <form action="#">
+                <h3>Pide tu Cotizacion</h3>
+                <h1><?= $result; ?></h1>
+              <form  method="POST">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Your Name">
+                  <input type="text" name="name" class="form-control" placeholder="Nombre">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Your Email">
+                  <input type="number" name="tel" class="form-control" placeholder="Telefono">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Subject">
+                      <input type="text" name="city" class="form-control" placeholder="Ciudad">
                 </div>
                 <div class="form-group">
-                  <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                    <input type="text" name="dir" class="form-control" placeholder="Direccion">
                 </div>
                 <div class="form-group">
-                  <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                  <input type="text" name="nameC" class="form-control" placeholder="Tipo Cotizacion">
+                </div>
+                <div class="form-group">
+                  <input name="texto" cols="30" rows="7" maxlength="800" class="form-control" placeholder="Descripcion">
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="submit" value="Cotizar" class="btn btn-primary py-3 px-5">
                 </div>
               </form>
             </div>
@@ -176,7 +223,7 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
+ 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -188,11 +235,7 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
     
   </body>
