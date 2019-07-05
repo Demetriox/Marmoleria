@@ -1,38 +1,53 @@
 <?php
  $result='';
 if(isset($_POST['submit'])){
-  require 'phpmailer/PHPMailerAutoload.php';
+ 
 
-  $mail = new PHPMailer;
-
-  //$mail->SMTPDebug = 3;                               // Enable verbose debug output
-
-  $mail->isSMTP();                                      // Set mailer to use SMTP
-  $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-  $mail->SMTPAuth = true;                               // Enable SMTP authentication
-  $mail->Username = 'marmolmensaje@gmail.com';                 // SMTP username
-  $mail->Password = 'marmol123';                           // SMTP password
-  $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-  $mail->Port = 587;                                    // TCP port to connect to
-
-  $mail->setFrom('marmolmensaje@gmail.com');
-  $mail->addAddress('marmolespaloverde@gmail.com');     // Add a recipient              // Name is optional
-  $mail->addReplyTo('marmolespaloverde@gmail.com', 'Information');
-
-  $mail->isHTML(true);                                  // Set email format to HTML
-  $mail->Subject = 'Cotizacion';
-  $mail->Body    = '<h1 align=center> La persona : '.$_POST['name'].
-  '</br> <h4> Numero : </h4>'.$_POST['tel'].
-  '</br> <h4> Ciudad : </h4>'.$_POST['city'].
-  '</br> <h4> Nombre Asunto : </h4>'.$_POST['nameC'].
-  '</br> <h4> Nombre Asunto : </h4>'.$_POST['texto'];
+  if(isset($_POST['dejarenblanco'])){
+    $dejarenblanco = $_POST['dejarenblanco'];
+}
+if(isset($_POST['nocambiar'])){
+    $nocambiar = $_POST['nocambiar'];
+}
 
 
-  if(!$mail->send()) {
-      $result= 'Message could not be sent.';
+if ($dejarenblanco == '' && $nocambiar == 'http://') { 
+    // código para enviar el formulario
+    require 'phpmailer/PHPMailerAutoload.php';
+
+    $mail = new PHPMailer;
+  
+    //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+  
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'marmolmensaje@gmail.com';                 // SMTP username
+    $mail->Password = 'marmol123';                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+  
+    $mail->setFrom('marmolmensaje@gmail.com');
+    $mail->addAddress('marmolespaloverde@gmail.com');     // Add a recipient              // Name is optional
+    $mail->addReplyTo('marmolespaloverde@gmail.com', 'Information');
+  
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Cotizacion';
+    $mail->Body    = '<h1 align=center> La persona : '.$_POST['name'].
+    '</br> <h4> Numero : </h4>'.$_POST['tel'].
+    '</br> <h4> Direccion : </h4>'.$_POST['dir'].
+    '</br> <h4> Ciudad : </h4>'.$_POST['city'].
+    '</br> <h4> Nombre Asunto : </h4>'.$_POST['nameC'].
+    '</br> <h4> Nombre Asunto : </h4>'.$_POST['texto'];
+
+    if(!$mail->send()) {
+      $result= 'El mensaje Fallo al enviarse';
   } else {
-      $result = 'Message has been sent';
+      $result = 'El mensaje ha sido enviado';
   }
+}
+
+  
 }
 
 ?>
@@ -62,10 +77,11 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-    
+    <script src="js/formval.js"></script>
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+   
   </head>
   <body>
     
@@ -131,30 +147,72 @@ if(isset($_POST['submit'])){
           <div class="row d-flex align-items-stretch no-gutters">
             <div class="col-md-12 p-5 order-md-last">
                 <h3>Pide tu Cotizacion</h3>
-                <h1><?= $result; ?></h1>
-              <form  method="POST">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" placeholder="Nombre">
-                </div>
-                <div class="form-group">
-                  <input type="number" name="tel" class="form-control" placeholder="Telefono">
-                </div>
-                <div class="form-group">
-                      <input type="text" name="city" class="form-control" placeholder="Ciudad">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="dir" class="form-control" placeholder="Direccion">
-                </div>
-                <div class="form-group">
-                  <input type="text" name="nameC" class="form-control" placeholder="Tipo Cotizacion">
-                </div>
-                <div class="form-group">
-                  <input name="texto" cols="30" rows="7" maxlength="800" class="form-control" placeholder="Descripcion">
-                </div>
-                <div class="form-group">
-                  <input type="submit" name="submit" value="Cotizar" class="btn btn-primary py-3 px-5">
-                </div>
-              </form>
+                <h1></h1>
+<!-- form inicio -->
+<form id="myForm" class="needs-validation" method="post">
+<h2><?= $result; ?><h2>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom01">Nombre</label>
+      <input type="text" name="name" class="form-control" id="validationCustom01" placeholder="Nombre" required>
+      <div class="valid-feedback">
+        Excelente!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Telefono</label>
+      <input type="number" name="tel" class="form-control" id="validationCustom02" placeholder="Telefono" required>
+      <div class="valid-feedback">
+        Se mira bien!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustomUsername">Direccion</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+        </div>
+        <input type="text" name="dir" class="form-control" id="validationCustomUsername" placeholder="Direccion" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Porfavor ponga una direccion
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom03">City</label>
+      <input type="text" name="city" class="form-control" id="validationCustom03" placeholder="Ciudad" required>
+      <div class="invalid-feedback">
+        Ponga una ciudad valida.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom04">Cotizare : </label>
+      <input type="text" name="nameC" class="form-control" id="validationCustom04" placeholder="Ej: Recubrimiento Baño" required>
+      <div class="invalid-feedback">
+        Introduzca un texto valido.
+      </div>
+    </div>
+    <div id="spam" style="display:none">
+            <label>Dejar esto en blanco</label>
+            <input type="text" id="dejarenblanco"  name="dejarenblanco" />
+            <label>No cambiar esto</label>
+            <input type="text" value="http://" name="nocambiar" />
+        </div>
+    <div class="col-md-12 mb-3">
+      <label for="validationCustom02">Descripcion de cotizacion</label>
+      <input type="text" name="texto" class="form-control" id="validationCustom02" placeholder="Descripcion"  required>
+      <div class="valid-feedback">
+        Nice!
+      </div>
+    </div>
+  </div>
+  <input class="btn btn-primary" name="submit" type="submit" value="ENVIAR MENSAJE">
+</form>
+
+<!-- FORM FIN -->
+
+
             </div>
           </div>
         </div>
@@ -223,7 +281,7 @@ if(isset($_POST['submit'])){
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
- 
+  
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -236,7 +294,6 @@ if(isset($_POST['submit'])){
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="js/main.js"></script>
-    
+  <script src="js/main.js"></script>  
   </body>
 </html>
