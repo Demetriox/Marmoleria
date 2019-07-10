@@ -134,7 +134,7 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
               <p><span>Email:</span> <a href="mailto:marmolespaloverde@gmail.com">marmolespaloverde@gmail.com</a></p>
             </div>
             <div class="col-md-3">
-              <p><a href="https://www.facebook.com/marmoles.paloverde"><span class="icon-facebook">acebook</span></a></p>
+              <p><a href="https://www.facebook.com/marmoles.paloverde"><img style="height:60px" src="images/marmoleriaPaloverde/facebook.svg" alt="">Marmoleria Palo Verde</a></p>
             </div>
           </div>
         </div>
@@ -223,10 +223,11 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
               <div class="ftco-footer-widget mb-4">
                 <h2 class="ftco-heading-2">Marmoleria Palo Verde</h2>
           <p>“NO QUEREMOS SER GRANDES QUEREMOS SER LOS MEJORES”</p>
-          <p> Tel. 01 662 250 5540</p>
+          <p> Tel. 01 662 250 5540</p><a href="https://www.facebook.com/marmolygranitompv/">
                 <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                  <li class="ftco-animate"><a href="https://www.facebook.com/marmolygranitompv/"><span class="icon-facebook"></span></a></li>
+                  <li class="ftco-animate"><img src="images/marmoleriaPaloverde/facebook.svg" alt="facebook icon"></li>
                 </ul>
+                </a>
               </div>
             </div>
             <div class="col-md">
