@@ -73,7 +73,6 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
     <link rel="stylesheet" href="css/ionicons.min.css">
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
 
     <script src="js/formval.js"></script>
     <link rel="stylesheet" href="css/flaticon.css">
@@ -95,7 +94,7 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
 				<li class="nav-item"><a href="index.html" class="nav-link">Tel: 01 662 250 5540</a></li>
 				<li class="nav-item "><a href="index.html" class="nav-link">Inicio</a></li>
 				<li class="nav-item"><a href="residenciales.html" class="nav-link">Residenciales</a></li>
-				<li class="nav-item"><a href="serviciospantheon.html" class="nav-link">Servicios Panteon</a></li>
+				<li class="nav-item"><a href="serviciospantheon.html" class="nav-link">Servicios Panteón</a></li>
 				<li class="nav-item"><a href="ornamentos.html" class="nav-link">Ornamentos</a></li>
 				<li class="nav-item"><a href="laminas.html" class="nav-link">Laminas</a></li>
 				<li class="nav-item active"><a href="cotizar.php" class="nav-link">Cotizar</a></li>
@@ -121,15 +120,15 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
         <div class="container">
           <div class="row d-flex mb-5 contact-info">
             <div class="col-md-12 mb-4">
-              <h2 class="h4">Informacion de Contacto</h2>
+              <h2 class="h4">Información de Contacto</h2>
             </div>
             <div class="w-100"></div>
             <div class="col-md-3">
               <p><span>Direccion:</span> Ramon Ballesteros # 42 Esquina Jose Ma. Valencia
-                Hermosillo, Sonora 83280, junto al panteon </p>
+                Hermosillo, Sonora 83280, junto al panteón </p>
             </div>
             <div class="col-md-3">
-              <p><span>Telefono:</span> <a href="tel://016622505540">01 662 250 5540</a></p>
+              <p><span>Teléfono:</span> <a href="tel://016622505540">01 662 250 5540</a></p>
             </div>
             <div class="col-md-3">
               <p><span>Email:</span> <a href="mailto:marmolespaloverde@gmail.com">marmolespaloverde@gmail.com</a></p>
@@ -144,28 +143,28 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
         <div class="container-wrap">
           <div class="row d-flex align-items-stretch no-gutters">
             <div class="col-md-12 p-5 order-md-last">
-                <h3>Pide tu Cotizacion</h3>
+                <h3>Pide tu Cotización</h3>
                 <h1></h1>
 <!-- form inicio -->
 <form id="myForm" class="needs-validation" method="post">
 <h2><?= $result; ?><h2>
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationCustom01">Nombre</label>
+      <label for="validationCustom01">Nombre :</label>
       <input type="text" name="name" class="form-control" id="validationCustom01" placeholder="Nombre" required>
       <div class="valid-feedback">
-        Excelente!
+        OK
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationCustom02">Telefono</label>
+      <label for="validationCustom02">Teléfono :</label>
       <input type="number" name="tel" class="form-control" id="validationCustom02" placeholder="Telefono" required>
       <div class="valid-feedback">
-        Se mira bien!
+        OK
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationCustomUsername">Direccion</label>
+      <label for="validationCustomUsername">Direccion :</label>
       <div class="input-group">
         <div class="input-group-prepend">
         </div>
@@ -178,7 +177,7 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
   </div>
   <div class="form-row">
     <div class="col-md-6 mb-3">
-      <label for="validationCustom03">City</label>
+      <label for="validationCustom03">Ciudad :</label>
       <input type="text" name="city" class="form-control" id="validationCustom03" placeholder="Ciudad" required>
       <div class="invalid-feedback">
         Ponga una ciudad valida.
@@ -198,10 +197,10 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
             <input type="text" value="http://" name="nocambiar" />
         </div>
     <div class="col-md-12 mb-3">
-      <label for="validationCustom02">Descripcion de cotizacion</label>
+      <label for="validationCustom02">Descripcion de cotización</label>
       <input type="text" name="texto" class="form-control" id="validationCustom02" placeholder="Descripcion"  required>
       <div class="valid-feedback">
-        Nice!
+        OK
       </div>
     </div>
   </div>
@@ -246,7 +245,7 @@ if ($dejarenblanco == '' && $nocambiar == 'http://') {
         <div class="col-md">
           <div class="ftco-footer-widget mb-4 ml-md-4">
             <h2 class="ftco-heading-2">Ramon Ballesteros # 42 Esquina Jose Ma. Valencia
-              Hermosillo, Sonora 83280, junto al panteon</h2>
+              Hermosillo, Sonora 83280, junto al panteón</h2>
           </div>
           </div>
             <div class="col-md">
